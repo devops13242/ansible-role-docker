@@ -1,0 +1,15 @@
+---
+- name: Install docker package
+  become: true
+  become_user: root
+  ansible.builtin.package:
+    name: docker.io
+    state: present
+
+- name: Start Docker Service
+  become: true
+  become_user: root
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: true
